@@ -4,28 +4,36 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'the home page of a developer, that loves code' } = Astro.props;
+const { title, description = "the home page of a developer, that loves code" } =
+  Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="author" content="codenomnom">
-    <meta name="revisit-after" content="7 days">
+    <meta name="author" content="codenomnom" />
+    <meta name="revisit-after" content="7 days" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta name="generator" content={Astro.generator} />
 
-    <meta property="og:title" content="codenomnom">
-    <meta property="og:description" content={description}>
-    <meta property="og:image" content="https://codenomnom.com/og.png">
+    <meta property="og:title" content="codenomnom" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://codenomnom.com/og.png" />
 
-    <meta name="twitter:title" content="codenomnom">
-    <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content="https://codenomnom.com/og.png">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="codenomnom" />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://codenomnom.com/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body class="flex justify-center px-0 py-8 md:p-10 lg:p-20 font-sans">
@@ -33,7 +41,8 @@ const { title, description = 'the home page of a developer, that loves code' } =
   </body>
 </html>
 <style is:global>
-  html, body {
+  html,
+  body {
     min-height: 100vh;
     color: #222;
     line-height: 1.6;
