@@ -1,0 +1,150 @@
+---
+import { Image } from "astro:assets";
+import Avatar from "../images/avatar.jpg";
+import MainLayout from "../layouts/main.layout.astro";
+import GithubIcon from "../images/icons/github.astro";
+---
+
+<MainLayout title="codenomnom">
+  <main class="flex w-full flex-col md:flex-row">
+    <section
+      class="left max-md:mb-8 md:w-2/5 lg:w-1/2 flex flex-col justify-start items-center px-6"
+    >
+      <div class="max-h-48 md:max-h-[45dvh] md:min-h-48">
+        <Image
+          src={Avatar}
+          alt="that's an image of me"
+          class="avatar rounded-full self-center"
+          width="460"
+          height="460"
+        />
+      </div>
+      <a
+        href="https://github.com/codenomnom/"
+        class="github"
+        title="my github account"
+      >
+        <GithubIcon class="w-6 h-6 mt-4" />
+      </a>
+    </section>
+    <section
+      class="right flex flex-col items-center md:block md:w-3/5 lg:w-1/2 p-6"
+    >
+      <div
+        class="inline-block py-[4px] px-[10px] mb-8
+        uppercase font-bold text-sm text-[#333] font-montserrat tracking-[0px] leading-7
+        bg-[rgba(0,0,0,.04)]"
+      >
+        projects
+      </div>
+      <ul>
+        <li>
+          <div>quirks-mode</div>
+          <span>software development peculiarities (mostly front-end)</span>
+        </li>
+
+        <li>
+          <div>scratch from start</div>
+          <span>how to setup your front-end project</span>
+        </li>
+
+        <li>
+          <div>next-recipes</div>
+          <span>tips, tricks and instructions on how to handle Next.js</span>
+        </li>
+
+        <li>
+          <div>windsock.dev</div>
+          <span>tail winds</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+</MainLayout>
+
+<style>
+  main {
+    background: #f5f5f5;
+  }
+  section {
+    height: 100%;
+    position: relative;
+  }
+  ul {
+    max-width: 400px;
+
+    li {
+      border-bottom: 1px solid #ddd;
+      padding: 18px 0 6px 0;
+      position: relative;
+      transition: padding-left 0.3s ease;
+
+      @media (max-width: 768px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      & div {
+        z-index: 1;
+        position: inherit;
+        color: #ec4899;
+        font-size: 16px;
+      }
+
+      & span {
+        font-size: 14px;
+        z-index: 2;
+        position: inherit;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 0;
+        right: 0;
+        bottom: -8px;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        border-radius: 4px;
+
+        transition: background-color 0.3s ease;
+      }
+
+      &:hover {
+        cursor: wait;
+        padding-left: 24px;
+
+        @media (max-width: 768px) {
+          padding-left: 1rem;
+        }
+
+        &:before {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+  .github {
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  img {
+    border: 14px solid #fff;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+</style>
