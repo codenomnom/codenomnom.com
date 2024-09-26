@@ -18,10 +18,15 @@ const { title, description = "the home page of a developer, that loves code" } =
     <meta name="viewport" content="width=device-width" />
 
     <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favicon-192x192.png"
+    />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="generator" content={Astro.generator} />
@@ -36,13 +41,15 @@ const { title, description = "the home page of a developer, that loves code" } =
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
-  <body class="flex justify-center px-0 py-8 md:p-10 lg:p-20 font-sans">
+  <body>
     <slot />
   </body>
 </html>
 <style is:global>
   html,
   body {
+    box-sizing: border-box;
+    margin: 0;
     min-height: 100vh;
     color: #222;
     line-height: 1.6;
@@ -53,5 +60,22 @@ const { title, description = "the home page of a developer, that loves code" } =
     /* background: #fde047; */
     background: #f5f5f5;
     tab-size: 4;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+
+    padding: 2rem 0.25rem;
+
+    @media (min-width: 768px) {
+      padding: 2rem /* 40px */;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 3rem /* 80px */;
+    }
+
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 </style>

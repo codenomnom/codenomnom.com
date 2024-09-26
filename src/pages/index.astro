@@ -6,79 +6,147 @@ import GithubIcon from "../images/icons/github.astro";
 ---
 
 <MainLayout title="codenomnom">
-  <main class="flex w-full flex-col md:flex-row">
-    <section
-      class="left max-md:mb-6 md:w-2/5 lg:w-1/2 flex flex-col justify-start items-center px-6"
+  <main>
+    <div class="avatar">
+      <Image
+        src={Avatar}
+        alt="that's an image of me"
+        width="460"
+        height="460"
+      />
+      &nbsp;
+    </div>
+
+    <a
+      href="https://github.com/codenomnom/"
+      class="github-link"
+      title="my github account"
     >
-      <div class="max-h-48 md:max-h-[45dvh] md:min-h-48">
-        <Image
-          src={Avatar}
-          alt="that's an image of me"
-          class="avatar rounded-full self-center"
-          width="460"
-          height="460"
-        />
-      </div>
-      <a
-        href="https://github.com/codenomnom/"
-        class="github"
-        title="my github account"
-      >
-        <GithubIcon class="w-6 h-6 mt-4" />
-      </a>
-    </section>
-    <section
-      class="right flex flex-col items-center md:block md:w-3/5 lg:w-1/2 p-6"
-    >
-      <div
-        class="inline-block py-[4px] px-[10px] mb-8
-        uppercase font-bold text-sm text-[#333] font-montserrat tracking-[0px] leading-7
-        bg-[rgba(0,0,0,.04)]"
-      >
-        projects
-      </div>
-      <ul>
-        <li>
-          <div>quirks-mode</div>
-          <span>mostly front-end development peculiarities</span>
-        </li>
+      <GithubIcon />
+    </a>
 
-        <li>
-          <div>scratch from start</div>
-          <span>how to setup your front-end project</span>
-        </li>
+    <div class="projects-title">projects</div>
 
-        <li>
-          <div>next-recipes</div>
-          <span>tips, tricks and instructions on how to handle Next.js</span>
-        </li>
+    <ul>
+      <li>
+        <div>quirks-mode</div>
+        <span>mostly front-end development peculiarities</span>
+      </li>
 
-        <li>
-          <div>windsock.dev</div>
-          <span>tail winds</span>
-        </li>
-      </ul>
-    </section>
+      <li>
+        <div>scratch from start</div>
+        <span>how to setup your front-end project</span>
+      </li>
+
+      <li>
+        <div>next-recipes</div>
+        <span>tips, tricks and instructions on how to handle Next.js</span>
+      </li>
+
+      <li>
+        <div>windsock.dev</div>
+        <span>tail winds</span>
+      </li>
+    </ul>
   </main>
 </MainLayout>
 
 <style>
-  main {
-    background: #f5f5f5;
+  :root {
+    --gray: #333;
+    --bg-color: #f5f5f5;
   }
-  section {
+  main {
+    display: flex;
+    max-width: 360px;
+    padding-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-color);
     position: relative;
   }
-  ul {
-    max-width: 400px;
 
-    li {
-      border-bottom: 1px solid #ddd;
-      padding: 18px 0 6px 0;
+  .avatar {
+    max-height: 8rem /* 128px */;
+    min-height: 2rem /* 32px */;
+    position: relative;
+    border-radius: 50%;
+
+    & img {
+      display: block; /* inline by default */
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
       position: relative;
+      border-radius: 50%;
+      object-fit: contain;
+      filter: grayscale(1);
+      transition: filter 0.2s ease-out;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      inset: -2px;
+      border: 2px solid var(--bg-color);
+      transition: all 0.2s ease-out;
+      pointer-events: none;
+    }
+
+    &:hover {
+      & img {
+        filter: grayscale(0);
+      }
+      &:after {
+        inset: -7px;
+        border-width: 4px;
+        border-color: var(--gray);
+      }
+    }
+  }
+
+  .github-link {
+    transition: opacity 0.3s ease;
+    
+    svg {
+      width: 1.5rem /* 24px */;
+      height: 1.5rem /* 24px */;
+      margin-top: 1rem /* 16px */
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .projects-title {
+    margin: 3rem 0 2rem;
+    padding: 0.25rem 1rem;
+    background-color: rgba(0, 0, 0, 0.04);
+
+    color: var(--gray);
+    font-weight: 700;
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.75rem /* 28px */;
+    text-transform: uppercase;
+  }
+
+  ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & li {
+      position: relative;
+      padding: 18px 0 6px 0;
+      border-bottom: 1px solid #ddd;
       transition: padding-left 0.3s ease;
 
-      @media (max-width: 768px) {
+      @media (max-width: 768px) { /* disables moving around */
         padding-left: 1rem;
         padding-right: 1rem;
       }
@@ -91,23 +159,17 @@ import GithubIcon from "../images/icons/github.astro";
       }
 
       & span {
-        font-size: 14px;
         z-index: 2;
         position: inherit;
+        font-size: 14px;
       }
 
       &:before {
         content: "";
         position: absolute;
-        top: -8px;
-        left: 0;
-        right: 0;
-        bottom: -8px;
-        top: 0;
-        bottom: 0;
+        inset: 0;
         z-index: 0;
         border-radius: 4px;
-
         transition: background-color 0.3s ease;
       }
 
@@ -124,26 +186,5 @@ import GithubIcon from "../images/icons/github.astro";
         }
       }
     }
-  }
-  .github {
-    transition: opacity 0.3s ease;
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-  img {
-    border: 14px solid #fff;
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
   }
 </style>
