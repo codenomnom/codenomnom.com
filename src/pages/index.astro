@@ -105,18 +105,19 @@ import GithubIcon from "../images/icons/github.astro";
 
   .github-link {
     transition: opacity 0.3s ease;
-    
     svg {
-      width: 1.5rem /* 24px */;
-      height: 1.5rem /* 24px */;
-      margin-top: 1rem /* 16px */
+      width: 1.5rem; /* 24px */
+      height: 1.5rem; /* 24px */
+      margin-top: 1rem; /* 16px */
+
+      color: var(--gray);
     }
 
     &:hover {
       opacity: 0.7;
     }
     &:visited, &:active, &:focus, &:focus-visible {
-      color: inherit;
+      color: var(--gray);
       outline: 0;
     }
   }
