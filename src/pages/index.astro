@@ -149,6 +149,7 @@ import GithubIcon from "../images/icons/github.astro";
 
       position: relative;
       padding: 18px 0 6px 2px;
+      border-bottom: 1px solid #e3e3e3;
       transition: padding-left 0.3s ease;
 
       @media (max-width: 768px) {
@@ -172,7 +173,7 @@ import GithubIcon from "../images/icons/github.astro";
 
       & .status {
         position: absolute;
-        top: 30px;
+        top: calc(50% - var(--status-size) / 2);
         right: 12px;
 
         width: var(--status-size);
