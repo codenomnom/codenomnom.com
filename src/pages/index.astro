@@ -22,36 +22,45 @@ import GithubIcon from "../images/icons/github.astro";
       class="github-link"
       title="my github account"
     >
-      <GithubIcon/>
+      <GithubIcon />
     </a>
 
     <div class="projects-title">projects</div>
 
-    <ul>
-      <li data-status="live">
+    <div class="list">
+      <a href="https://codenomnom.github.io/prev-log/" data-status="live">
+        <div class="name">prev·log</div>
+        <span>
+          my log of headbangs, when
+          <i>Next</i> resulted in <i>prev</i>
+        </span>
+        <div class="status" title="live"></div>
+      </a>
+
+      <a href="https://quirks-mode.com/" data-status="live">
         <div class="name">quirks-mode</div>
         <span>mostly front-end development peculiarities</span>
         <div class="status" title="live"></div>
-      </li>
+      </a>
 
-      <li data-status="wip">
+      <a data-status="wip">
         <div class="name">next-recipes</div>
         <span>tips, tricks and instructions on how to handle Next.js</span>
         <abbr class="status" title="wip"></abbr>
-      </li>
+      </a>
 
-      <li data-status="wip">
+      <a data-status="wip">
         <div class="name">windsock.dev</div>
         <span>tail winds</span>
         <abbr class="status" title="wip"></abbr>
-      </li>
+      </a>
 
-      <li data-status="frozen">
+      <a data-status="frozen">
         <div class="name">scratch from start</div>
         <span>how to setup your front-end project</span>
         <abbr class="status" title="frozen"></abbr>
-      </li>
-    </ul>
+      </a>
+    </div>
   </main>
 </MainLayout>
 
@@ -103,9 +112,20 @@ import GithubIcon from "../images/icons/github.astro";
     }
   }
 
-  .github-link {
+  a {
+    text-decoration: none;
     transition: opacity 0.3s ease;
 
+    &:visited,
+    &:active,
+    &:focus,
+    &:focus-visible {
+      color: var(--gray);
+      outline: 0;
+    }
+  }
+
+  .github-link {
     svg {
       width: 1.5rem; /* 24px */
       height: 1.5rem; /* 24px */
@@ -116,11 +136,6 @@ import GithubIcon from "../images/icons/github.astro";
 
     &:hover {
       opacity: 0.7;
-    }
-
-    &:visited, &:active, &:focus, &:focus-visible {
-      color: var(--gray);
-      outline: 0;
     }
   }
 
@@ -136,13 +151,14 @@ import GithubIcon from "../images/icons/github.astro";
     text-transform: uppercase;
   }
 
-  ul {
+  .list {
     width: 100%;
-    list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 
-    & li {
+    & a {
       --cursor: initial;
       --status-size: 6px;
       --status-color: #ddd;
@@ -180,7 +196,7 @@ import GithubIcon from "../images/icons/github.astro";
         height: var(--status-size);
         border-radius: 50%;
         background-color: var(--status-color);
-        transition: all .2s ease;
+        transition: all 0.2s ease;
 
         cursor: help;
       }
@@ -196,6 +212,7 @@ import GithubIcon from "../images/icons/github.astro";
 
       &[data-status="live"] {
         --status-color: #2ec4b6;
+        --cursor: pointer;
       }
 
       &[data-status="wip"] {
