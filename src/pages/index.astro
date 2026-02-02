@@ -28,6 +28,22 @@ import GithubIcon from "../images/icons/github.astro";
     <div class="projects-title">projects</div>
 
     <div class="list">
+      <a data-status="wip">
+        <div class="name">the meaningful error</div>
+        <span>
+          how to structure errors to bring meaning to any end
+        </span>
+        <div class="status" title="wip"></div>
+      </a>
+
+      <a href="https://codenomnom.github.io/low-probability-prose/" data-status="live">
+        <div class="name">low—probability prose</div>
+        <span>
+          the chronicles of your last token
+        </span>
+        <div class="status" title="live"></div>
+      </a>
+
       <a href="https://prev-log.com/" data-status="live">
         <div class="name">prev·log</div>
         <span>
@@ -185,6 +201,7 @@ import GithubIcon from "../images/icons/github.astro";
         z-index: 2;
         position: inherit;
         font-size: 14px;
+        color: var(--gray);
       }
 
       & .status {
